@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>翻书动画</title>
+  <link rel="stylesheet" href="./css/resetCSS.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/main.css">
+
+</head>
+
+<body>
+  <div class="book">
+    <div class="item1" style="--i:2; background-image: url(./images/addImage.png);"></div>
+    <div class="item2" style="--i:4;--s:1; --l: 4; background-image: url(./images/cover.png);;"></div>
+    <div class="item3" style="--i:3;--s:2; --l: 3;  background-image: url(./images/pageImage.png)"></div>
+    <div class="item4" style="--i:2;--s:3; --l: 2;  background-image: url(./images/pageImage.png)"></div>
+    <div class="item5" style="--i:1;--s:4; --l: 1;  background-image: url(./images/pageImage.png);"></div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <span class="text">T</span>
+      <span class="text">o</span>
+      <span class="text">D</span>
+      <span class="text">o</span>
+      <input type="text" placeholder="添加todo" id="headerAddinp">
+      <span id="headerAdd">添加</span>
+    </div>
+
+    <main>
+      <div class="addPage item">
+        <div class="page-title">
+          <i class="iconfont icon-ziyuan1"></i>
+          <span>添加详细描述</span>
+        </div>
+        <ul class="detail">
+          <li>
+            <span class="item-title">标题</span>
+            <input type="text" id="detail-title">
+          </li>
+
+          <li>
+            <span class="item-title">时间</span>
+            <input type="text" id="time">
+          </li>
+
+          <li>
+            <div class="content">详细描述</div>
+            <textarea name="" id="content" cols="30" rows="10"></textarea>
+          </li>
+        </ul>
+
+        <button id="detail-btn">添加</button>
+      </div>
+
+      <div class="listPage item">
+        <div class="page-title">
+          <i class="iconfont icon-liebiao"></i>
+          <span>todo列表</span>
+        </div>
+        <div id="no-list">
+          <div>还没有什么事要做，</div>
+          <div>赶紧去添加吧...........</div>
+
+          <div class="sentence">
+
+          </div>
+        </div>
+        <ul class="list-wrapper">
+          <li class="item-list">
+            <div class="top clearfix">
+              <i class="iconfont icon-todo left"></i>
+              <span class="left">学习js</span>
+              <button class="right look">查看详情</button>
+            </div>
+          </li>
+          <li class="item-list">
+            <div class="top clearfix">
+              <span
+                class="left title">jsgfyuehfurijjfujsgfyuehfurijjfujsgfyuehfurijjfujsgfyuehfurijjfujsgfyuehfurijjfu</span>
+              <button class="right look">查看详情</button>
+            </div>
+          </li>
+        </ul>
+
+        <div class="tools">
+          <div class="num-group">
+            <span id="total"></span>
+            <span id="done">已完成9项</span>
+          </div>
+          <div class="button-group">
+            <button id="clearDone">清除已完成</button>
+            <button id="clear">清空列表</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="history item">
+        <div class="page-title">
+          <i class="iconfont icon-ic_history"></i>
+          <span>历史记录</span>
+        </div>
+        <div class="history-item">
+          <div class="history-time">2021-04-05 20:56:09</div>
+          <ul class="history-ul">
+            <li class="history-item-li">学习js</li>
+          </ul>
+        </div>
+        <div class="history-item">
+          <div class="history-time">2021-04-05 20:56:09</div>
+          <ul class="history-ul">
+            <li class="history-item-li">学习js</li>
+          </ul>
+        </div>
+        <div class="history-item">
+          <div class="history-time">2021-04-05 20:56:09</div>
+          <ul class="history-ul">
+            <li class="history-item-li">学习js</li>
+          </ul>
+        </div>
+        <div class="history-item">
+          <div class="history-time">2021-04-05 20:56:09</div>
+          <ul class="history-ul">
+            <li class="history-item-li">学习js</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="./js/start.js"></script>
+  <script src="./js/add.js"></script>
+</body>
+
+</html>

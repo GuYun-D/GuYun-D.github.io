@@ -1,0 +1,55 @@
+@import url(//at.alicdn.com/t/font_2530725_s2z5yis1fbj.css);
+body {
+  background-color: #f8b669;
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden;
+  user-select: none;
+  max-width: 1260px;
+  min-width: 1260px;
+}
+
+.book {
+  width: 270px;
+  height: 420px;
+  position: absolute;
+  top: 100px;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  transition: .8s;
+  z-index: 345;
+}
+
+.item1, .item2, .item3, .item4, .item5 {
+  width: 270px;
+  height: 400px;
+  position: absolute;
+  /* 这是翻页的起点，在左边 */
+  transform-origin: left;
+  background-size: cover;
+  /* 这是翻页时元素之间的延迟 */
+  transition: calc(var(--i)*.3s);
+  /* 这是翻页时元素的层级 */
+  z-index: calc(var(--i)*99);
+}
+
+.item1, .item2 {
+  border: solid 20px #576574;
+  border-left: none;
+  top: -20px;
+  border-radius: 0 20px 20px 0;
+}
+
+.main {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 610px;
+  background-color: #E7E1E3;
+  opacity: 0;
+  z-index: 1;
+  transition: all .8s;
+  max-width: 1260px;
+  min-width: 1260px;
+}
