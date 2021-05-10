@@ -21,6 +21,11 @@ var listLis = listWrapper.getElementsByTagName('li')
 var historyTotal = document.querySelector('.history_total')
 var noneHistory = document.querySelector('.none-history')
 var clearCache = document.querySelector('#clear-cache')
+var messageBox = document.querySelector('.message')
+var messageWrapper = document.querySelector('.message-wrapper')
+var cancal = document.querySelector('#cancal')
+var confirm = document.querySelector('#confirm')
+var messageBody = document.querySelector('#message-body')
 
 
 let createIndex = 0
@@ -116,11 +121,13 @@ clear.addEventListener('click', function () {
   tools.style.display = 'none'
 })
 
-clearCache.addEventListener('click', function(){
+clearCache.addEventListener('click', function () {
   window.localStorage.removeItem('MYHISTORY')
   clearHistory()
   noneHistory.style.display = 'block'
   historyArr = []
+
+  message('cache')
 })
 
 clearDone.addEventListener('click', function () {
@@ -145,6 +152,7 @@ clearDone.addEventListener('click', function () {
   historyRender(historyArr)
   statistics(addArr)
 })
+
 
 
 function adTime() {
@@ -302,3 +310,24 @@ function clearHistory() {
   }
 }
 
+function message(handleClear) {
+  // if (messageType === 'hidden') {
+  //   messageBox.style.height = '0'
+  //   messageWrapper.style.zIndex = '-1'
+  //   messageWrapper.style.opacity = '0'
+  // } else {
+  //   messageBox.style.height = '260px'
+  //   messageWrapper.style.zIndex = '10000001'
+  //   messageWrapper.style.opacity = '1'
+  // }
+
+  messageBox.style.height = '260px'
+  messageWrapper.style.zIndex = '10000001'
+  messageWrapper.style.opacity = '1'
+
+
+
+  // if(handleClear === 'cache'){
+
+  // }
+}
