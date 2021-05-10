@@ -1,26 +1,27 @@
 var addArr = []
+var historyArr = []
 var headerAddinp = document.querySelector('#headerAddinp')
 var headerAdd = document.querySelector('#headerAdd')
-
 var myTime = document.querySelector('#time')
 var myContent = document.querySelector('#content')
 var myTitle = document.querySelector('#detail-title')
 var myBtn = document.querySelector('#detail-btn')
 var listWrapper = document.querySelector('.list-wrapper')
-
 var total = document.querySelector('#total')
 var done = document.querySelector('#done')
 var clearDone = document.querySelector('#clearDone')
 var clear = document.querySelector('#clear')
-
 var addPage = document.querySelector('.addPage')
 var listPage = document.querySelector('.listPage')
-
 var noList = document.querySelector('#no-list')
-
 var sentence = document.querySelector('.sentence')
-
 var tools = document.querySelector('.tools')
+var listLis = listWrapper.getElementsByTagName('li')
+var historyTotal = document.querySelector('.history_total')
+var noneHistory = document.querySelector('.none-history')
+
+
+let createIndex = 0
 
 const sentences = [
   '不管梦想有多远，走了多少弯路，总有一天，我们还是会回到，那个最初的地方',
@@ -30,8 +31,8 @@ const sentences = [
 ]
 
 let sentenceIndex = 0
-
 startRender()
+
 
 // 用户输入的数据
 var value = ''
@@ -49,10 +50,13 @@ headerAdd.addEventListener('click', function () {
     }
     addArr.unshift(todoItem)
     storageData(addArr)
-    listWrapper.append(createList(todoItem.todoTitle))
+    listWrapper.append(createList(todoItem.todoTitle, todoItem.isDone))
     statistics(addArr)
     changeFlex()
     tools.style.display = 'block'
+    clearHistory()
+    historyRender(addArr)
+    noneHistory.style.display = 'none'
   } else {
     alert('请输入合法内容')
   }
@@ -74,10 +78,17 @@ myBtn.addEventListener('click', function () {
     }
     addArr.unshift(todoItem)
     storageData(addArr)
-    listWrapper.append(createList(todoItem.todoTitle))
+    listWrapper.append(createList(todoItem.todoTitle, todoItem.isDone))
     statistics(addArr)
     changeFlex()
     tools.style.display = 'block'
+    clearHistory()
+    historyRender(addArr)
+    myContent.value = ''
+    myTime.value = ''
+    myTime.value = ''
+    noneHistory.style.display = 'none'
+
   } else {
     alert('请输入完整信息')
   }
@@ -95,6 +106,30 @@ clear.addEventListener('click', function () {
   statistics()
   changeFlex('clear')
   tools.style.display = 'none'
+})
+
+clearDone.addEventListener('click', function () {
+
+  createIndex = 0
+
+  var doneArr = addArr.filter(function (item) {
+    return item.isDone === !true
+  })
+
+  addArr = doneArr
+  // console.log(addArr);
+  storageData(addArr)
+
+  var nodeLength = listWrapper.children.length
+  if (nodeLength !== 0) {
+    while (listWrapper.children.length != 0) {
+      listWrapper.removeChild(listWrapper.children[0])
+    }
+  }
+  startRender()
+  clearHistory()
+  historyRender(addArr)
+  statistics(addArr)
 })
 
 
@@ -133,7 +168,7 @@ function storageData(newArr) {
 }
 
 
-function createList(title) {
+function createList(title, done) {
   var itemList = document.createElement('div')
   itemList.setAttribute('class', 'item-list')
   itemList.innerHTML = `
@@ -143,16 +178,39 @@ function createList(title) {
     <button class="right look">查看详情</button>
   </div>
   `
+  var i = itemList.getElementsByTagName('i')[0]
+  if (done === true) {
+    i.style.color = '#7CB342'
+  } else if (done === false) {
+    i.style.color = "#ccc"
+  }
+  i.setAttribute('data-index', createIndex)
+  i.onclick = function () {
+    let index = this.getAttribute('data-index')
+    addArr[index].isDone = !addArr[index].isDone
+    if (addArr[index].isDone === true) {
+      this.style.color = '#7CB342'
+    } else {
+      this.style.color = "#ccc"
+    }
+    storageData(addArr)
+    statistics(addArr)
+  }
+  createIndex++
   return itemList
 }
+
 
 function startRender() {
   var data = JSON.parse(window.localStorage.getItem('MYDATA')) || []
   addArr = data
+  historyArr = data
   for (var i = 0; i < data.length; i++) {
-    listWrapper.append(createList(data[i].todoTitle))
+    listWrapper.append(createList(data[i].todoTitle, data[i].isDone))
   }
   statistics(data)
+  startList(data)
+  historyRender(historyArr)
 }
 
 function statistics(data) {
@@ -168,8 +226,6 @@ function statistics(data) {
     });
   }
   total.innerHTML = '总共 ' + dataLength + ' 项'
-
-
   done.innerHTML = "已完成 " + count + " 项"
 }
 
@@ -178,7 +234,7 @@ function changeFlex(params) {
     addPage.style.flex = '2'
     listPage.style.flex = '1'
     noList.style.display = 'block'
-    
+
     if (sentenceIndex === 4) {
       sentenceIndex = 0
     }
@@ -190,3 +246,44 @@ function changeFlex(params) {
     noList.style.display = 'none'
   }
 }
+
+function startList(data) {
+  if (data.length === 0) {
+    changeFlex('clear')
+    tools.style.display = 'none'
+  }
+}
+
+function historyRender(data) {
+  if (data.length !== 0) {
+    for (var i = 0; i < data.length; i++) {
+      historyTotal.append(createHistoryList(data[i]))
+    }
+    noneHistory.style.display = 'none'
+
+  } else {
+    noneHistory.style.display = 'block'
+  }
+}
+
+function createHistoryList(data) {
+  var historyItem = document.createElement('div')
+  historyItem.setAttribute('class', 'history-item')
+  historyItem.innerHTML = `
+    <div class="history-time" >${data.addTime}</div>
+    <ul class="history-ul">
+      <li class="history-item-li">${data.todoTitle}</li>
+    </ul>
+  `
+  return historyItem
+}
+
+function clearHistory() {
+  var nodeLength = historyTotal.children.length
+  if (nodeLength !== 0) {
+    while (historyTotal.children.length != 0) {
+      historyTotal.removeChild(historyTotal.children[0])
+    }
+  }
+}
+

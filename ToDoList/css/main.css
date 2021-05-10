@@ -152,6 +152,7 @@ main {
 .listPage {
   transition: all .8s;
   position: relative;
+  overflow-x: hidden;
 }
 
 .listPage .item-list {
@@ -259,7 +260,7 @@ main {
 }
 
 .history-item:nth-child(n) {
-  background-color: #E7D0AD;
+  background-color: skyblue;
 }
 
 .history-item:nth-child(2n) {
@@ -267,13 +268,15 @@ main {
 }
 
 .history-time {
-  border-bottom: 1px #ccc solid;
-  color: #fff;
+  border-bottom: 2px rgb(167, 165, 165) solid;
+  color: #F8E9AA;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .history-item-li {
   padding-top: 10px;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px dashed #111;
   height: 24px;
   line-height: 20px;
   white-space: nowrap;
@@ -281,4 +284,9 @@ main {
   text-overflow: ellipsis;
   padding-left: 20px;
   color: #fff;
+}
+
+
+.none-history img{
+  width: 353px;
 }
