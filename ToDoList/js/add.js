@@ -1,5 +1,6 @@
 var addArr = []
 var historyArr = []
+var newHistory = []
 var headerAddinp = document.querySelector('#headerAddinp')
 var headerAdd = document.querySelector('#headerAdd')
 var myTime = document.querySelector('#time')
@@ -19,6 +20,7 @@ var tools = document.querySelector('.tools')
 var listLis = listWrapper.getElementsByTagName('li')
 var historyTotal = document.querySelector('.history_total')
 var noneHistory = document.querySelector('.none-history')
+var clearCache = document.querySelector('#clear-cache')
 
 
 let createIndex = 0
@@ -49,6 +51,7 @@ headerAdd.addEventListener('click', function () {
       addTime: adTime()
     }
     addArr.unshift(todoItem)
+    historyArr.unshift(todoItem)
     storageData(addArr)
     listWrapper.append(createList(todoItem.todoTitle, todoItem.isDone))
     statistics(addArr)
@@ -57,6 +60,8 @@ headerAdd.addEventListener('click', function () {
     clearHistory()
     historyRender(addArr)
     noneHistory.style.display = 'none'
+    clearHistory()
+    historyRender(historyArr)
   } else {
     alert('请输入合法内容')
   }
@@ -88,6 +93,9 @@ myBtn.addEventListener('click', function () {
     myTime.value = ''
     myTime.value = ''
     noneHistory.style.display = 'none'
+    historyArr.unshift(todoItem)
+    clearHistory()
+    historyRender(historyArr)
 
   } else {
     alert('请输入完整信息')
@@ -95,7 +103,7 @@ myBtn.addEventListener('click', function () {
 })
 
 clear.addEventListener('click', function () {
-  window.localStorage.clear()
+  window.localStorage.removeItem('MYDATA')
   isClear = true
   var nodeLength = listWrapper.children.length
   if (nodeLength !== 0) {
@@ -108,6 +116,13 @@ clear.addEventListener('click', function () {
   tools.style.display = 'none'
 })
 
+clearCache.addEventListener('click', function(){
+  window.localStorage.removeItem('MYHISTORY')
+  clearHistory()
+  noneHistory.style.display = 'block'
+  historyArr = []
+})
+
 clearDone.addEventListener('click', function () {
 
   createIndex = 0
@@ -117,7 +132,6 @@ clearDone.addEventListener('click', function () {
   })
 
   addArr = doneArr
-  // console.log(addArr);
   storageData(addArr)
 
   var nodeLength = listWrapper.children.length
@@ -128,7 +142,7 @@ clearDone.addEventListener('click', function () {
   }
   startRender()
   clearHistory()
-  historyRender(addArr)
+  historyRender(historyArr)
   statistics(addArr)
 })
 
@@ -165,6 +179,7 @@ function addZero(time, ifMilli) {
 
 function storageData(newArr) {
   window.localStorage.setItem('MYDATA', JSON.stringify(newArr))
+  window.localStorage.setItem('MYHISTORY', JSON.stringify(historyArr))
 }
 
 
@@ -203,8 +218,9 @@ function createList(title, done) {
 
 function startRender() {
   var data = JSON.parse(window.localStorage.getItem('MYDATA')) || []
+  newHistory = JSON.parse(window.localStorage.getItem('MYHISTORY')) || []
   addArr = data
-  historyArr = data
+  historyArr = newHistory
   for (var i = 0; i < data.length; i++) {
     listWrapper.append(createList(data[i].todoTitle, data[i].isDone))
   }
@@ -260,7 +276,6 @@ function historyRender(data) {
       historyTotal.append(createHistoryList(data[i]))
     }
     noneHistory.style.display = 'none'
-
   } else {
     noneHistory.style.display = 'block'
   }

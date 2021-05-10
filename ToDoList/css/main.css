@@ -253,6 +253,25 @@ main {
   text-indent: 2em;
 }
 
+.history .page-title i.icon-qingchuhuancun{
+  display: inline-block;
+  margin-left: 100px;
+  font-size: 18px;
+  padding: 5px;
+  font-weight: normal;
+  color: #fff;
+  background-color: #f40;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: .5;
+  transition: all .8s;
+}
+
+.history .page-title i.icon-qingchuhuancun:hover{
+  opacity: 1;
+}
+
 .history-item {
   padding: 10px;
   margin: 10px 0;
@@ -268,7 +287,7 @@ main {
 }
 
 .history-time {
-  border-bottom: 2px rgb(167, 165, 165) solid;
+  border-bottom: 2px solid #666;
   color: #F8E9AA;
   font-size: 16px;
   font-weight: bold;
