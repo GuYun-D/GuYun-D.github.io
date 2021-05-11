@@ -56,7 +56,7 @@ main {
 .item {
   box-sizing: border-box;
   width: 400px;
-  height: 515px;
+  height: 95%;
   background-color: #fff;
   margin: 20px 20px;
   border-radius: 20px;

@@ -7,13 +7,14 @@ body {
   user-select: none;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  padding: 9% 0;
 }
 
 .book {
-  width: 270px;
-  height: 420px;
+  width: 21%;
+  height: 32.8%;
   position: absolute;
-  top: 100px;
   transform-style: preserve-3d;
   perspective: 1200px;
   transition: .8s;
