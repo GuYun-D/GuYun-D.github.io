@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToDoList</title>
+  <link rel="shortcut icon" href="./todo.ico" type="image/x-icon">
   <link rel="stylesheet" href="./css/resetCSS.css">
   <link rel="stylesheet" href="./css/index.css">
   <link rel="stylesheet" href="./css/main.css">
@@ -19,6 +20,11 @@
     <div class="item3" style="--i:3;--s:2; --l: 3;  background-image: url(./images/pageImage.png)"></div>
     <div class="item4" style="--i:2;--s:3; --l: 2;  background-image: url(./images/pageImage.png)"></div>
     <div class="item5" style="--i:1;--s:4; --l: 1;  background-image: url(./images/pageImage.png);"></div>
+  </div>
+
+  <div class="music">
+    <span class="music-title">音乐</span>
+    <span id="switch">关</span>
   </div>
 
   <div class="main">
@@ -57,6 +63,8 @@
         <button id="detail-btn">添加</button>
       </div>
 
+      
+
       <div class="listPage item">
         <div class="page-title">
           <i class="iconfont icon-liebiao"></i>
@@ -89,7 +97,7 @@
         <div class="page-title clearfix">
           <i class="iconfont icon-ic_history left"></i>
           <span class="left">历史记录</span>
-          <i class="iconfont icon-qingchuhuancun right" title="清除缓存" id="clear-cache">清除缓存</i>
+          <i class="iconfont icon-qingchuhuancun right" title="清除缓存" id="clear-cache">清空历史</i>
         </div>
         <div class="history_total">
 
@@ -108,18 +116,19 @@
         </div>
         <div class="foot clearfix">
           <button id="confirm">确定</button>
-          <button id="cancal">取消</button>
+          <button id="cancal">我再想想</button>
         </div>
       </div>
     </div>
-
-
   </div>
 
-
+  <div class="music">
+    <audio src="./sound/backgroundMusic.mp3" id="music" loop></audio>
+  </div>
 
   <script src="./js/start.js"></script>
   <script src="./js/add.js"></script>
+  <script src="./js/settings.js"></script>
 </body>
 
 </html>

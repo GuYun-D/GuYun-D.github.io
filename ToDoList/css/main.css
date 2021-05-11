@@ -324,6 +324,7 @@ main {
   background-color: rgba(224, 221, 219, 0.432);
   opacity: 0;
   z-index: -1;
+  transition: all .4s;
 }
 
 .message{
@@ -331,39 +332,49 @@ main {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  top: 0;
-  left: 330px;
-  width: 650px;
+  top: 14px;
+  left: 50%;
+  width: 400px;
   height: 0;
   box-sizing: border-box;
-  background-color: #ccc;
+  background-color: #fff;
   border-radius: 0 0 20px 20px;
-  transition: all .8s;
+  transition: all .3s;
   overflow: hidden;
   box-shadow: 2px 2px 5px rgb(85, 76, 73);
+  border-top: 2px solid red;
+  transform: translateX(-50%);
 }
 
 
 .message .head{
   width: 100%;
-  height: 60px;
-  line-height: 50px;
+  height: 30px;
+  line-height: 30px;
   font-size: 20px;
-  color: #fff;
+  color: #f40;
   font-weight: bold;
   box-sizing: border-box;
   padding: 5px 20px;
+  flex: 0.5;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
 }
 
 .message .body{
   width: 100%;
-  height: 160px;
-  background-color: #F8E9AA;
+  height: 40px;
+  padding: 0 10px;
+  line-height: 40px;
+  color: yellowgreen;
+  font-size: 18px;
+  flex: 1;
 }
 
 .message .foot{
   width: 100%;
-  height: 60px;
+  height: 30px;
+  flex: 1;
 }
 
 .message button{

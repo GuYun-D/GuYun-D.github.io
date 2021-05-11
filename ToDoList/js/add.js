@@ -1,6 +1,7 @@
 var addArr = []
 var historyArr = []
 var newHistory = []
+var handleMessage = ''
 var headerAddinp = document.querySelector('#headerAddinp')
 var headerAdd = document.querySelector('#headerAdd')
 var myTime = document.querySelector('#time')
@@ -67,7 +68,10 @@ headerAdd.addEventListener('click', function () {
     clearHistory()
     historyRender(historyArr)
   } else {
-    alert('请输入合法内容')
+    message('show', '')
+    messageBody.innerHTML = "请输入内容"
+    cancal.style.display = 'none'
+    handleMessage = ''
   }
   headerAddinp.value = ''
   value = ''
@@ -102,7 +106,10 @@ myBtn.addEventListener('click', function () {
     historyRender(historyArr)
 
   } else {
-    alert('请输入完整信息')
+    message('show', '')
+    messageBody.innerHTML = "请填写完整信息"
+    cancal.style.display = 'none'
+    handleMessage = ''
   }
 })
 
@@ -121,12 +128,13 @@ clear.addEventListener('click', function () {
 })
 
 clearCache.addEventListener('click', function () {
-  window.localStorage.removeItem('MYHISTORY')
-  clearHistory()
-  noneHistory.style.display = 'block'
-  historyArr = []
+  // window.localStorage.removeItem('MYHISTORY')
+  // clearHistory()
+  // noneHistory.style.display = 'block'
+  // historyArr = []
 
-  message('cache')
+  message('show', 'clear-cache')
+  messageBody.innerHTML = "确定要清空缓存吗？清空后无法恢复"
 })
 
 clearDone.addEventListener('click', function () {
@@ -152,6 +160,23 @@ clearDone.addEventListener('click', function () {
   statistics(addArr)
 })
 
+cancal.addEventListener('click', function () {
+  message('hidden')
+})
+
+confirm.addEventListener('click', function(){
+  handleConfirm()
+  handleMessage = ''
+})
+
+function handleConfirm() {
+  if (handleMessage === 'clear-cache') {
+    messageTip(1)
+    message('hidden')
+  }else if(handleMessage === ''){
+    message('hidden')
+  }
+}
 
 
 function adTime() {
@@ -309,24 +334,29 @@ function clearHistory() {
   }
 }
 
-function message(handleClear) {
-  // if (messageType === 'hidden') {
-  //   messageBox.style.height = '0'
-  //   messageWrapper.style.zIndex = '-1'
-  //   messageWrapper.style.opacity = '0'
-  // } else {
-  //   messageBox.style.height = '260px'
-  //   messageWrapper.style.zIndex = '10000001'
-  //   messageWrapper.style.opacity = '1'
-  // }
+function message(messageType, element) {
+  if (messageType === 'hidden') {
+    messageBox.style.height = '0'
+    messageWrapper.style.zIndex = '-1'
+    messageWrapper.style.opacity = '0'
+  } else if (messageType === 'show') {
+    messageBox.style.height = '140px'
+    messageWrapper.style.zIndex = '10000001'
+    messageWrapper.style.opacity = '1'
+  }
 
-  messageBox.style.height = '260px'
-  messageWrapper.style.zIndex = '10000001'
-  messageWrapper.style.opacity = '1'
+  handleMessage = element
+}
 
-
-
-  // if(handleClear === 'cache'){
-
-  // }
+function messageTip(handleName) {
+  switch (handleName) {
+    case 1:
+      window.localStorage.removeItem('MYHISTORY')
+      clearHistory()
+      noneHistory.style.display = 'block'
+      historyArr = []
+      break;
+    default:
+      break;
+  }
 }
