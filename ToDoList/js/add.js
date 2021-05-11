@@ -40,7 +40,6 @@ const sentences = [
 let sentenceIndex = 0
 startRender()
 
-
 // 用户输入的数据
 var value = ''
 var content = ''

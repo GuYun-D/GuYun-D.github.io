@@ -20,8 +20,6 @@ function open() {
   items[0].style.cursor = 'pointer'
 }
 
-
-
 items[0].addEventListener("click", function () {
   book.style.transition = 'all 0s'
   book.style.opacity = '0'
