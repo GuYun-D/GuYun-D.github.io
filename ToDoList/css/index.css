@@ -62,6 +62,7 @@ body {
   height: 50px;
   border-radius: 28px;
   cursor: pointer;
+  transition: all 0s;
 }
 
 .music .music-title{
@@ -84,5 +85,5 @@ body {
   text-align: center;
   line-height: 50px;
   color: #fff;
-  transition: all .8s;
+  transition: left .8s;
 }

@@ -1,6 +1,7 @@
 var book = document.querySelector('.book')
 var items = book.getElementsByTagName('div')
 var main = document.querySelector('.main')
+var music = document.querySelector('.music')
 
 book.addEventListener('mouseenter', open)
 
@@ -28,6 +29,7 @@ items[0].addEventListener("click", function () {
   document.body.style.display = 'block'
   clearTimeout(timer)
   main.style.zIndex = '1000000'
+  music.style.display = 'none'
 })
 
 var timer = setTimeout(() => {

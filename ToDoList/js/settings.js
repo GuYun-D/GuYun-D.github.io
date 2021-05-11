@@ -1,30 +1,25 @@
 var music = document.querySelector('.music')
 var switchBtn = document.querySelector('#switch')
-var musicStatus = true
+var musicStatus = false
 var musicEl = document.querySelector('#music')
 
 start()
-musicStart()
+changeStyle()
 
 music.addEventListener('click', function () {
   musicStart()
   start()
+  changeStyle()
 })
 
 
 function musicStart() {
-  if (musicStatus === true) {
+  if (musicStatus === false) {
     switchBtn.style.left = '50px'
-    switchBtn.style.backgroundColor = '#ccc'
-    switchBtn.innerHTML = '关'
-    music.style.backgroundColor = '#576574'
-    musicStatus = false
+    musicStatus = true
   } else {
     switchBtn.style.left = '0'
-    switchBtn.style.backgroundColor = '#f40'
-    switchBtn.innerHTML = '开'
-    music.style.backgroundColor = 'yellow'
-    musicStatus = true
+    musicStatus = false
   }
 }
 
@@ -32,8 +27,20 @@ function start() {
   if (musicStatus === true) {
     musicEl.play()
     console.log(musicStatus);
-  } else {
+  } else if (musicStatus === false) {
     musicEl.pause()
     console.log(musicStatus);
+  }
+}
+
+function changeStyle() {
+  if (musicStatus === false) {
+    switchBtn.style.backgroundColor = '#ccc'
+    switchBtn.innerHTML = '关'
+    music.style.backgroundColor = '#576574'
+  } else {
+    switchBtn.style.backgroundColor = '#f40'
+    switchBtn.innerHTML = '开'
+    music.style.backgroundColor = 'yellow'
   }
 }
