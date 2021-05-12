@@ -30,6 +30,7 @@ var messageBody = document.querySelector('#message-body')
 
 
 let createIndex = 0
+let cancalDisplay = true
 
 const sentences = [
   '不管梦想有多远，走了多少弯路，总有一天，我们还是会回到，那个最初的地方',
@@ -71,6 +72,7 @@ headerAdd.addEventListener('click', function () {
     message('show', '')
     messageBody.innerHTML = "请输入内容"
     cancal.style.display = 'none'
+    cancalDisplay = false
     handleMessage = ''
   }
   headerAddinp.value = ''
@@ -98,17 +100,17 @@ myBtn.addEventListener('click', function () {
     clearHistory()
     historyRender(addArr)
     myContent.value = ''
-    myTime.value = ''
+    myTitle.value = ''
     myTime.value = ''
     noneHistory.style.display = 'none'
     historyArr.unshift(todoItem)
     clearHistory()
     historyRender(historyArr)
-
   } else {
     message('show', '')
     messageBody.innerHTML = "请填写完整信息"
     cancal.style.display = 'none'
+    cancalDisplay = false
     handleMessage = ''
   }
 })
@@ -125,14 +127,15 @@ clear.addEventListener('click', function () {
   statistics()
   changeFlex('clear')
   tools.style.display = 'none'
+  addArr = []
+  createIndex = 0
 })
 
 clearCache.addEventListener('click', function () {
-  // window.localStorage.removeItem('MYHISTORY')
-  // clearHistory()
-  // noneHistory.style.display = 'block'
-  // historyArr = []
-
+  if(cancalDisplay === false){
+    cancal.style.display = 'block'
+    cancalDisplay = true
+  }
   message('show', 'clear-cache')
   messageBody.innerHTML = "确定要清空缓存吗？清空后无法恢复"
 })
@@ -234,6 +237,7 @@ function createList(title, done) {
   i.setAttribute('data-index', createIndex)
   i.onclick = function () {
     let index = this.getAttribute('data-index')
+    console.log(index);
     addArr[index].isDone = !addArr[index].isDone
     if (addArr[index].isDone === true) {
       this.style.color = '#7CB342'
@@ -273,8 +277,8 @@ function statistics(data) {
       }
     });
   }
-  total.innerHTML = '总共 ' + dataLength + ' 项'
-  done.innerHTML = "已完成 " + count + " 项"
+  total.innerHTML = '总共&nbsp;' + dataLength + '&nbsp;项'
+  done.innerHTML = "已完成&nbsp;" + count + "&nbsp;项"
 }
 
 function changeFlex(params) {
