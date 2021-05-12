@@ -1,4 +1,4 @@
-@import url(//at.alicdn.com/t/font_2530725_1v4zd28ln47.css);
+@import url(//at.alicdn.com/t/font_2530725_iv40li7q04d.css);
 body {
   background-color: #f8b669;
   display: flex;
@@ -90,4 +90,17 @@ body {
   line-height: 50px;
   color: #fff;
   transition: left .8s;
+}
+
+i.icon-shezhi{
+  font-size: 22px;
+  margin-left: 30px;
+  font-weight: bold;
+  color: #f99f9f;
+  cursor: pointer;
+  transition: all .8s;
+}
+
+i.icon-shezhi:hover{
+  color: #fff;
 }
