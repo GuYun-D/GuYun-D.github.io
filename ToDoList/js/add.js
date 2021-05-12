@@ -28,6 +28,12 @@ var cancal = document.querySelector('#cancal')
 var confirm = document.querySelector('#confirm')
 var messageBody = document.querySelector('#message-body')
 
+var detailCard = document.querySelector('#detail-card')
+var todo = detailCard.querySelector('.todo')
+var addTime = document.querySelector('#add-time')
+var todoStatus = document.querySelector('#todoS')
+var contentText = document.querySelector('#content-text')
+
 
 let createIndex = 0
 let cancalDisplay = true
@@ -249,6 +255,11 @@ function createList(title, done) {
   }
   createIndex++
   return itemList
+
+  var detailBtn = itemList.getElementsByTagName('button')[0]
+  // detailBtn.addEventListener('click', function(){
+  //   todoDetail()
+  // })
 }
 
 
@@ -363,4 +374,11 @@ function messageTip(handleName) {
     default:
       break;
   }
+}
+
+function todoDetail(todoTitle, time, status, content){
+  todo.innerHTML = todoTitle
+  addTime.innerHTML = time
+  todoStatus.innerHTML = status
+  contentText.innerHTML = content
 }
