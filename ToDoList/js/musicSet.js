@@ -2,6 +2,7 @@ var music = document.querySelector('.music')
 var switchBtn = document.querySelector('#switch')
 var musicStatus = false
 var musicEl = document.querySelector('#music')
+var musicIcon = document.querySelector('.icon-vynil')
 
 start()
 changeStyle()
@@ -12,14 +13,30 @@ music.addEventListener('click', function () {
   changeStyle()
 })
 
+musicIcon.addEventListener('click', function(){
+  musicStatus =! musicStatus
+  start()
+  if(musicStatus === false){
+    musicIcon.id = ''
+    musicIcon.title = "点击开启音乐"
+  }else {
+    musicIcon.id = 'musicAnimation'
+    musicIcon.title = "点击关闭音乐"
+  }
+})
+
 
 function musicStart() {
   if (musicStatus === false) {
     switchBtn.style.left = '50px'
     musicStatus = true
+    musicIcon.id = 'musicAnimation'
+    musicIcon.title = "点击关闭音乐"
   } else {
     switchBtn.style.left = '0'
     musicStatus = false
+    musicIcon.id = ''
+    musicIcon.title = "点击开启音乐"
   }
 }
 
@@ -29,7 +46,6 @@ function start() {
     console.log(musicStatus);
   } else if (musicStatus === false) {
     musicEl.pause()
-    console.log(musicStatus);
   }
 }
 
