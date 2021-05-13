@@ -28,13 +28,6 @@ var cancal = document.querySelector('#cancal')
 var confirm = document.querySelector('#confirm')
 var messageBody = document.querySelector('#message-body')
 
-var detailCard = document.querySelector('#detail-card')
-var todo = detailCard.querySelector('.todo')
-var addTime = document.querySelector('#add-time')
-var todoStatus = document.querySelector('#todoS')
-var contentText = document.querySelector('#content-text')
-
-
 let createIndex = 0
 let cancalDisplay = true
 
@@ -65,7 +58,7 @@ headerAdd.addEventListener('click', function () {
     addArr.unshift(todoItem)
     historyArr.unshift(todoItem)
     storageData(addArr)
-    listWrapper.append(createList(todoItem.todoTitle, todoItem.isDone))
+    listWrapper.append(createList(todoItem))
     statistics(addArr)
     changeFlex()
     tools.style.display = 'block'
@@ -99,7 +92,7 @@ myBtn.addEventListener('click', function () {
     }
     addArr.unshift(todoItem)
     storageData(addArr)
-    listWrapper.append(createList(todoItem.todoTitle, todoItem.isDone))
+    listWrapper.append(createList(todoItem))
     statistics(addArr)
     changeFlex()
     tools.style.display = 'block'
@@ -138,7 +131,7 @@ clear.addEventListener('click', function () {
 })
 
 clearCache.addEventListener('click', function () {
-  if(cancalDisplay === false){
+  if (cancalDisplay === false) {
     cancal.style.display = 'block'
     cancalDisplay = true
   }
@@ -173,7 +166,7 @@ cancal.addEventListener('click', function () {
   message('hidden')
 })
 
-confirm.addEventListener('click', function(){
+confirm.addEventListener('click', function () {
   handleConfirm()
   handleMessage = ''
 })
@@ -182,7 +175,10 @@ function handleConfirm() {
   if (handleMessage === 'clear-cache') {
     messageTip(1)
     message('hidden')
-  }else if(handleMessage === ''){
+  } else if (typeof handleMessage === 'number') {
+    messageTip(2)
+    message('hidden')
+  } else if (handleMessage === '') {
     message('hidden')
   }
 }
@@ -224,20 +220,20 @@ function storageData(newArr) {
 }
 
 
-function createList(title, done) {
+function createList(todoItem) {
   var itemList = document.createElement('div')
   itemList.setAttribute('class', 'item-list')
   itemList.innerHTML = `
   <div class="top clearfix">
     <i class="iconfont icon-todo left"></i>
-    <span class="left">${title}</span>
-    <button class="right look">查看详情</button>
+    <span>${todoItem.todoTitle}</span>
+    <button class="right look">删除</button>
   </div>
   `
   var i = itemList.getElementsByTagName('i')[0]
-  if (done === true) {
+  if (todoItem.isDone === true) {
     i.style.color = '#7CB342'
-  } else if (done === false) {
+  } else if (todoItem.isDone === false) {
     i.style.color = "#ccc"
   }
   i.setAttribute('data-index', createIndex)
@@ -253,13 +249,18 @@ function createList(title, done) {
     storageData(addArr)
     statistics(addArr)
   }
+
+  var detBtn = itemList.getElementsByTagName('button')[0]
+  detBtn.addEventListener('click', function () {
+    message('show', todoItem.id)
+    messageBody.innerHTML = "确定要删除这项todo吗？\n 双击确定"
+  })
   createIndex++
+
+
   return itemList
 
-  var detailBtn = itemList.getElementsByTagName('button')[0]
-  // detailBtn.addEventListener('click', function(){
-  //   todoDetail()
-  // })
+
 }
 
 
@@ -269,7 +270,7 @@ function startRender() {
   addArr = data
   historyArr = newHistory
   for (var i = 0; i < data.length; i++) {
-    listWrapper.append(createList(data[i].todoTitle, data[i].isDone))
+    listWrapper.append(createList(data[i]))
   }
   statistics(data)
   startList(data)
@@ -361,6 +362,7 @@ function message(messageType, element) {
   }
 
   handleMessage = element
+  console.log(typeof handleMessage);
 }
 
 function messageTip(handleName) {
@@ -371,14 +373,38 @@ function messageTip(handleName) {
       noneHistory.style.display = 'block'
       historyArr = []
       break;
+    case 2:
+      var addDataindex = addArr.findIndex(function (item, index) {
+        return item.id = handleMessage
+      })
+
+      var historyDataIndex = historyArr.findIndex(function(item, index){
+        return item.id = handleMessage
+      })
+
+      addArr.splice(addDataindex, 1)
+      historyArr.splice(historyDataIndex, 1)
+      storageData(addArr)
+      clearHistory()
+      var nodeLength = listWrapper.children.length
+      if (nodeLength !== 0) {
+        while (listWrapper.children.length != 0) {
+          listWrapper.removeChild(listWrapper.children[0])
+        }
+      }
+      startRender()
     default:
       break;
   }
 }
 
-function todoDetail(todoTitle, time, status, content){
+function todoDetail(todoTitle, time, status, content) {
   todo.innerHTML = todoTitle
   addTime.innerHTML = time
   todoStatus.innerHTML = status
-  contentText.innerHTML = content
+  if (content.trim() !== '') {
+    contentText.innerHTML = content
+  } else {
+    contentWrap.style.display = 'none'
+  }
 }

@@ -199,7 +199,7 @@ main {
 }
 
 .listPage .item-list .look {
-  background-color: #83C35C;
+  background-color: #f40;
   opacity: 0;
   width: 65px;
   height: 30px;
@@ -258,48 +258,7 @@ main {
   text-indent: 2em;
 }
 
-.detail-card {
-  position: absolute;
-  width: 390px;
-  padding: 20px;
-  background-color: rgb(168, 148, 148);
-  z-index: 1200000;
-  border-radius: 20px 150px 20px 20px;
-  top: 125px;
-  left: 836px;
-}
 
-.detail-card .title {
-  color: rgb(102, 95, 82);
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.detail-card .todo {
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.detail-card .todo-time {
-  color: #ccc;
-  height: 20px;
-  line-height: 20px;
-}
-
-.detail-card .todo-status {
-  color: #ff0e0e;
-  height: 30px;
-  line-height: 30px;
-}
-
-.detail-card .content-wrap #content-text {
-  color: #fff;
-  line-height: 25px;
-  text-indent: 2em;
-}
 
 .history .page-title i.icon-qingchuhuancun {
   display: inline-block;
@@ -463,4 +422,10 @@ main {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.textOverflow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
