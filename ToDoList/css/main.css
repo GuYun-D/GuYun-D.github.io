@@ -45,7 +45,7 @@
   font-size: 15px;
 }
 
-.header span#add:hover {
+.header span#headerAdd:hover {
   background-color: #fff;
   color: #111;
 }

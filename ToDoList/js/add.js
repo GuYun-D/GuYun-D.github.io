@@ -68,7 +68,7 @@ headerAdd.addEventListener('click', function () {
     clearHistory()
     historyRender(historyArr)
   } else {
-    message('show', '')
+    message('show', 'none')
     messageBody.innerHTML = "请输入内容"
     cancal.style.display = 'none'
     cancalDisplay = false
@@ -106,7 +106,7 @@ myBtn.addEventListener('click', function () {
     clearHistory()
     historyRender(historyArr)
   } else {
-    message('show', '')
+    message('show', 'none')
     messageBody.innerHTML = "请填写完整信息"
     cancal.style.display = 'none'
     cancalDisplay = false
@@ -131,21 +131,33 @@ clear.addEventListener('click', function () {
 })
 
 clearCache.addEventListener('click', function () {
+  if(historyArr.length === 0){
+    message('show', 'none')
+    messageBody.innerHTML = "没有历史"
+    cancal.style.display = 'none'
+    return ;
+  }
   if (cancalDisplay === false) {
     cancal.style.display = 'block'
     cancalDisplay = true
   }
   message('show', 'clear-cache')
-  messageBody.innerHTML = "确定要清空缓存吗？清空后无法恢复"
+  messageBody.innerHTML = "确定要清空历史吗？清空后无法恢复"
 })
 
 clearDone.addEventListener('click', function () {
 
   createIndex = 0
-
   var doneArr = addArr.filter(function (item) {
     return item.isDone === !true
   })
+
+  if (doneArr.length === addArr.length) {
+    message('show', "none")
+    messageBody.innerHTML = '暂时没有已完成的todo'
+    cancal.style.display = 'none'
+    return ;
+  }
 
   addArr = doneArr
   storageData(addArr)
@@ -256,11 +268,7 @@ function createList(todoItem) {
     messageBody.innerHTML = "确定要删除这项todo吗？\n 双击确定"
   })
   createIndex++
-
-
   return itemList
-
-
 }
 
 
@@ -360,9 +368,15 @@ function message(messageType, element) {
     messageWrapper.style.zIndex = '10000001'
     messageWrapper.style.opacity = '1'
   }
-
   handleMessage = element
-  console.log(typeof handleMessage);
+  if (element === 'none') {
+    if(hiddenTimer){
+      clearTimeout(hiddenTimer)
+    }
+    var hiddenTimer = setTimeout(() => {
+      message('hidden')
+    }, 1000);
+  }
 }
 
 function messageTip(handleName) {
@@ -378,7 +392,7 @@ function messageTip(handleName) {
         return item.id = handleMessage
       })
 
-      var historyDataIndex = historyArr.findIndex(function(item, index){
+      var historyDataIndex = historyArr.findIndex(function (item, index) {
         return item.id = handleMessage
       })
 
