@@ -3,7 +3,7 @@ var switchBtn = document.querySelector('#switch')
 var musicStatus = false
 var musicEl = document.querySelector('#music')
 var musicIcon = document.querySelector('.icon-vynil')
-var musicSetting = JSON.parse(window.localStorage.getItem('SETTIMGS'))[2].status || []
+var musicSetting = JSON.parse(window.localStorage.getItem('SETTIMGS')) || []
 
 
 start()
@@ -27,7 +27,9 @@ musicIcon.addEventListener('click', function () {
   }
 })
 
-if (musicSetting === true) {
+if (musicSetting.length === 0) {
+  
+} else if (musicSetting[2].status === true) {
   switchBtn.style.backgroundColor = '#f40'
   switchBtn.innerHTML = '开'
   music.style.backgroundColor = 'yellow'

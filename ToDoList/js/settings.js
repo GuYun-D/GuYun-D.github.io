@@ -124,6 +124,9 @@ function startSetting() {
   settings = JSON.parse(window.localStorage.getItem('SETTIMGS')) || []
 
   console.log(settings);
+  if(settings.length === 0){
+    settings = statusArr
+  }
 
   if (mydata.length === 0 || myhistory.length === 0) {
     clearCache.style.backgroundColor = '#666'
@@ -143,6 +146,6 @@ function startSetting() {
 
 }
 
-window.addEventListener('contextmenu', function (e) {
-  e.preventDefault()
-})
+// window.addEventListener('contextmenu', function (e) {
+//   e.preventDefault()
+// })

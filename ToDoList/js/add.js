@@ -304,15 +304,18 @@ function startRender() {
   addArr = data
   historyArr = newHistory
   var showMessage = JSON.parse(window.localStorage.getItem('SETTIMGS')) || []
-  for (var i = 0; i < 2; i++) {
-    if (showMessage[i].status === true) {
-      itemArr[i].style.display = 'none'
-      if (i !== 0) {
-        historyPage.style.flex = '1'
-        console.log(historyPage.children[2].children[0].style.width = '80%');
+  if (showMessage.length !== 0) {
+    for (var i = 0; i < 2; i++) {
+      if (showMessage[i].status === true) {
+        itemArr[i].style.display = 'none'
+        if (i !== 0) {
+          historyPage.style.flex = '1'
+          console.log(historyPage.children[2].children[0].style.width = '80%');
+        }
       }
     }
   }
+
   for (var i = 0; i < data.length; i++) {
     listWrapper.append(createList(data[i]))
   }
