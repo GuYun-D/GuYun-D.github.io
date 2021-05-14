@@ -109,7 +109,7 @@ footer {
   padding-top: 30px;
 }
 
-footer a {
+footer a#btn {
   display: block;
   text-align: center;
   line-height: 40px;
@@ -126,6 +126,24 @@ footer a {
 
 footer a:hover {
   background-color: #4cae4c;
+}
+
+footer .myWords{
+  width: 100%;
+  color: #666;
+  text-align: center;
+  line-height: 40px;
+  margin: 20px;
+}
+
+footer .address{
+  color: blue;
+  transition: all .8s;
+}
+
+footer .address:hover{
+  color: #5cb85c;
+  background-color: transparent;
 }
 
 .notes {

@@ -41,3 +41,7 @@ items[0].addEventListener("click", function () {
 var timer = setTimeout(() => {
   open()
 }, 1000)
+
+window.addEventListener('contextmenu', function(e){
+  e.preventDefault()
+})

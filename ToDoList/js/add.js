@@ -37,6 +37,18 @@ var itemArr = [historyPage, addPage]
 let createIndex = 0
 let cancalDisplay = true
 
+document.addEventListener('keydown', function (e) {
+  if (e.keyCode === 13) {
+    handleHeaderAdd()
+  }
+})
+
+document.addEventListener('keydown', function (e) {
+  if (e.altKey) {
+    handleDetailBtn()
+  }
+})
+
 const sentences = [
   '不管梦想有多远，走了多少弯路，总有一天，我们还是会回到，那个最初的地方',
   '不良的习惯会随时阻碍你走向成名、获利和享乐的路上去',
@@ -52,72 +64,11 @@ var value = ''
 var content = ''
 
 headerAdd.addEventListener('click', function () {
-  if (headerAddinp.value.trim()) {
-    value = headerAddinp.value
-    const todoItem = {
-      id: Date.now(),
-      todoTitle: value,
-      detailContent: '',
-      isDone: false,
-      addTime: adTime()
-    }
-    addArr.unshift(todoItem)
-    historyArr.unshift(todoItem)
-    storageData(addArr)
-    listWrapper.append(createList(todoItem))
-    statistics(addArr)
-    changeFlex()
-    tools.style.display = 'block'
-    clearHistory()
-    historyRender(addArr)
-    noneHistory.style.display = 'none'
-    clearHistory()
-    historyRender(historyArr)
-  } else {
-    message('show', 'none')
-    messageBody.innerHTML = "请输入内容"
-    cancal.style.display = 'none'
-    cancalDisplay = false
-    handleMessage = ''
-  }
-  headerAddinp.value = ''
-  value = ''
+  handleHeaderAdd()
 })
 
 myBtn.addEventListener('click', function () {
-  if (myContent.value.trim() || myTime.value.trim() || myTitle.value.trim()) {
-    value = myTitle.value
-    content = myContent.value
-
-    const todoItem = {
-      id: Date.now(),
-      todoTitle: myTitle.value,
-      detailContent: myContent.value,
-      isDone: false,
-      addTime: myTime.value
-    }
-    addArr.unshift(todoItem)
-    storageData(addArr)
-    listWrapper.append(createList(todoItem))
-    statistics(addArr)
-    changeFlex()
-    tools.style.display = 'block'
-    clearHistory()
-    historyRender(addArr)
-    myContent.value = ''
-    myTitle.value = ''
-    myTime.value = ''
-    noneHistory.style.display = 'none'
-    historyArr.unshift(todoItem)
-    clearHistory()
-    historyRender(historyArr)
-  } else {
-    message('show', 'none')
-    messageBody.innerHTML = "请填写完整信息"
-    cancal.style.display = 'none'
-    cancalDisplay = false
-    handleMessage = ''
-  }
+  handleDetailBtn()
 })
 
 clear.addEventListener('click', function () {
@@ -188,6 +139,75 @@ confirm.addEventListener('click', function () {
   handleConfirm()
   handleMessage = ''
 })
+
+function handleDetailBtn() {
+  if (myContent.value.trim() != '' && myTime.value.trim() != '' && myTitle.value.trim() != '') {
+    value = myTitle.value
+    content = myContent.value
+
+    const todoItem = {
+      id: Date.now(),
+      todoTitle: myTitle.value,
+      detailContent: myContent.value,
+      isDone: false,
+      addTime: myTime.value
+    }
+    addArr.unshift(todoItem)
+    storageData(addArr)
+    listWrapper.append(createList(todoItem))
+    statistics(addArr)
+    changeFlex()
+    tools.style.display = 'block'
+    clearHistory()
+    historyRender(addArr)
+    myContent.value = ''
+    myTitle.value = ''
+    myTime.value = ''
+    noneHistory.style.display = 'none'
+    historyArr.unshift(todoItem)
+    clearHistory()
+    historyRender(historyArr)
+  } else {
+    message('show', 'none')
+    messageBody.innerHTML = "请填写完整信息"
+    cancal.style.display = 'none'
+    cancalDisplay = false
+    handleMessage = ''
+  }
+}
+
+function handleHeaderAdd() {
+  if (headerAddinp.value.trim()) {
+    value = headerAddinp.value
+    const todoItem = {
+      id: Date.now(),
+      todoTitle: value,
+      detailContent: '',
+      isDone: false,
+      addTime: adTime()
+    }
+    addArr.unshift(todoItem)
+    historyArr.unshift(todoItem)
+    storageData(addArr)
+    listWrapper.append(createList(todoItem))
+    statistics(addArr)
+    changeFlex()
+    tools.style.display = 'block'
+    clearHistory()
+    historyRender(addArr)
+    noneHistory.style.display = 'none'
+    clearHistory()
+    historyRender(historyArr)
+  } else {
+    message('show', 'none')
+    messageBody.innerHTML = "请输入内容"
+    cancal.style.display = 'none'
+    cancalDisplay = false
+    handleMessage = ''
+  }
+  headerAddinp.value = ''
+  value = ''
+}
 
 function handleConfirm() {
   if (handleMessage === 'clear-cache') {
@@ -438,3 +458,4 @@ function todoDetail(todoTitle, time, status, content) {
     contentWrap.style.display = 'none'
   }
 }
+

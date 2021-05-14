@@ -143,5 +143,6 @@ function startSetting() {
 
 }
 
-
-
+window.addEventListener('contextmenu', function (e) {
+  e.preventDefault()
+})
