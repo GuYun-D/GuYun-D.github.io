@@ -3,7 +3,7 @@ var switchBtn = document.querySelector('#switch')
 var musicStatus = false
 var musicEl = document.querySelector('#music')
 var musicIcon = document.querySelector('.icon-vynil')
-var musicSetting = JSON.parse(window.localStorage.getItem('SETTIMGS'))[2].status
+var musicSetting = JSON.parse(window.localStorage.getItem('SETTIMGS'))[2].status || []
 
 
 start()

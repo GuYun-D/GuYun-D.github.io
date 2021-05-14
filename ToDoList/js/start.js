@@ -4,7 +4,7 @@ var main = document.querySelector('.main')
 var music = document.querySelector('.music')
 var musicIcon = document.querySelector('.icon-vynil')
 var switchBtn = document.querySelector('#switch')
-var musicSetting = JSON.parse(window.localStorage.getItem('SETTIMGS'))[2].status
+var musicSetting = JSON.parse(window.localStorage.getItem('SETTIMGS'))[2].status || []
 
 book.addEventListener('mouseenter', open)
 
