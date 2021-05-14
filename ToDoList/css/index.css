@@ -11,6 +11,7 @@ body {
   padding: 9% 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+  position: relative;
 }
 
 .book {
@@ -41,6 +42,13 @@ body {
   border-left: none;
   top: -20px;
   border-radius: 0 20px 20px 0;
+}
+
+div.tip{
+  position: absolute;
+  left: 40px;
+  top: 500px;
+  color: #f40;
 }
 
 .main {
