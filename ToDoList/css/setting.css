@@ -1,4 +1,4 @@
-html, body{
+html, body {
   width: 100%;
   height: 100%;
   background-color: #CDE3F1;
@@ -6,17 +6,20 @@ html, body{
   font-family: Arial, Helvetica, sans-serif;
   padding: 10px 40px;
   box-sizing: border-box;
+  min-width: 1180px;
 }
 
-.container{
+.container {
   width: 100%;
   padding: 10px;
   background-color: #fff;
+  border-radius: 20px 20px 20px 20px;
 }
 
-header{
+header {
   width: 100%;
   height: 50px;
+  line-height: 50px;
   box-sizing: content-box;
   font-size: 30px;
   font-style: italic;
@@ -25,13 +28,12 @@ header{
   margin-bottom: 20px;
 }
 
-main{
+main {
   width: 45%;
   color: brown;
-
 }
 
-main ul{
+main ul {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -39,7 +41,7 @@ main ul{
   flex-direction: column;
 }
 
-main ul li{
+main ul li {
   width: 100%;
   height: 50px;
   line-height: 40px;
@@ -47,9 +49,11 @@ main ul li{
   padding: 5px 10px;
   box-sizing: border-box;
   border-radius: 10px;
+  color: #826d6d;
+  font-size: 18px;
 }
 
-main ul li button{
+main ul li button {
   width: 110px;
   height: 36px;
   color: #fff;
@@ -62,11 +66,11 @@ main ul li button{
   transition: all .4s;
 }
 
-main ul li button:hover{
+main ul li button:hover {
   background-color: #f40;
 }
 
-.switch{
+.switch {
   width: 80px;
   height: 40px;
   display: flex;
@@ -79,7 +83,7 @@ main ul li button:hover{
   transition: all .4s;
 }
 
-.switch .dot{
+.switch .dot {
   display: block;
   width: 35px;
   height: 35px;
@@ -87,16 +91,44 @@ main ul li button:hover{
   border-radius: 50%;
 }
 
-
-
-aside{
+aside {
   width: 50%;
   height: 300px;
   border-left: 1px solid #ccc;
 }
 
-aside img{
+aside img {
   width: 90%;
   height: 237px;
   margin: 10px 0 0 30px;
+}
+
+footer {
+  width: 100%;
+  height: 40px;
+  padding-top: 30px;
+}
+
+footer a {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  width: 100px;
+  height: 40px;
+  background-color: #5cb85c;
+  border: 1px solid green;
+  border-radius: 8px;
+  transition: all .4s;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+}
+
+footer a:hover {
+  background-color: #4cae4c;
+}
+
+.notes {
+  color: #ccc;
+  font-size: 12px;
 }

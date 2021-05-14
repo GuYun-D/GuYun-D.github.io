@@ -2,6 +2,9 @@ var book = document.querySelector('.book')
 var items = book.getElementsByTagName('div')
 var main = document.querySelector('.main')
 var music = document.querySelector('.music')
+var musicIcon = document.querySelector('.icon-vynil')
+var switchBtn = document.querySelector('#switch')
+var musicSetting = JSON.parse(window.localStorage.getItem('SETTIMGS'))[2].status
 
 book.addEventListener('mouseenter', open)
 
@@ -30,6 +33,9 @@ items[0].addEventListener("click", function () {
   clearTimeout(timer)
   main.style.zIndex = '1000000'
   music.style.display = 'none'
+  if (musicSetting) {
+    musicIcon.click()
+  }
 })
 
 var timer = setTimeout(() => {

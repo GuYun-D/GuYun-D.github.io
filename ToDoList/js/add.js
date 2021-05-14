@@ -1,6 +1,7 @@
 var addArr = []
 var historyArr = []
 var newHistory = []
+var displayArr = []
 var handleMessage = ''
 var headerAddinp = document.querySelector('#headerAddinp')
 var headerAdd = document.querySelector('#headerAdd')
@@ -26,7 +27,12 @@ var messageBox = document.querySelector('.message')
 var messageWrapper = document.querySelector('.message-wrapper')
 var cancal = document.querySelector('#cancal')
 var confirm = document.querySelector('#confirm')
-var messageBody = document.querySelector('#message-body')
+var messageBody = document.getElementById('message-body')
+var addPage = document.querySelector('.addPage')
+var historyPage = document.querySelector('.history')
+var itemArr = [historyPage, addPage]
+
+
 
 let createIndex = 0
 let cancalDisplay = true
@@ -131,11 +137,11 @@ clear.addEventListener('click', function () {
 })
 
 clearCache.addEventListener('click', function () {
-  if(historyArr.length === 0){
+  if (historyArr.length === 0) {
     message('show', 'none')
     messageBody.innerHTML = "没有历史"
     cancal.style.display = 'none'
-    return ;
+    return;
   }
   if (cancalDisplay === false) {
     cancal.style.display = 'block'
@@ -156,7 +162,7 @@ clearDone.addEventListener('click', function () {
     message('show', "none")
     messageBody.innerHTML = '暂时没有已完成的todo'
     cancal.style.display = 'none'
-    return ;
+    return;
   }
 
   addArr = doneArr
@@ -277,6 +283,16 @@ function startRender() {
   newHistory = JSON.parse(window.localStorage.getItem('MYHISTORY')) || []
   addArr = data
   historyArr = newHistory
+  var showMessage = JSON.parse(window.localStorage.getItem('SETTIMGS')) || []
+  for (var i = 0; i < 2; i++) {
+    if (showMessage[i].status === true) {
+      itemArr[i].style.display = 'none'
+      if (i !== 0) {
+        historyPage.style.flex = '1'
+        console.log(historyPage.children[2].children[0].style.width = '80%');
+      }
+    }
+  }
   for (var i = 0; i < data.length; i++) {
     listWrapper.append(createList(data[i]))
   }
@@ -370,7 +386,7 @@ function message(messageType, element) {
   }
   handleMessage = element
   if (element === 'none') {
-    if(hiddenTimer){
+    if (hiddenTimer) {
       clearTimeout(hiddenTimer)
     }
     var hiddenTimer = setTimeout(() => {

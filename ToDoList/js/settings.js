@@ -2,6 +2,7 @@ var ul = document.getElementsByTagName('ul')[0]
 var liList = ul.getElementsByTagName('li')
 var showImg = document.getElementById('show-img')
 var clearCache = document.getElementById('clearCache')
+var btn = document.getElementById('btn')
 var mydata = []
 var myhistory = []
 var settings = []
@@ -15,12 +16,6 @@ var imgArr = [
   '../images/history.png',
   '../images/detail.png',
   '../images/music.png'
-]
-
-var changeImgArr = [
-  '../images/nohistory.png',
-  '../images/nodetail.png',
-  '../images/music-on.png'
 ]
 
 
@@ -48,7 +43,6 @@ liList[0].children[1].addEventListener('click', function () {
   if (settings[0].status === true) {
     this.style.backgroundColor = 'tomato'
     this.style.alignItems = 'flex-end';
-    showImg.src = changeImgArr[0]
   } else {
     this.style.backgroundColor = '#ccc'
     this.style.alignItems = '';
@@ -62,7 +56,6 @@ liList[1].children[1].addEventListener('click', function () {
   if (settings[1].status === true) {
     this.style.backgroundColor = 'tomato'
     this.style.alignItems = 'flex-end';
-    showImg.src = changeImgArr[1]
   } else {
     this.style.backgroundColor = '#ccc'
     this.style.alignItems = '';
@@ -76,7 +69,7 @@ liList[2].children[1].addEventListener('click', function () {
   if (settings[2].status === true) {
     this.style.backgroundColor = 'tomato'
     this.style.alignItems = 'flex-end';
-    showImg.src = changeImgArr[2]
+    alert("由于浏览器的原因，需要点击添加todo后才可以自动播放音乐")
   } else {
     this.style.backgroundColor = '#ccc'
     this.style.alignItems = '';
@@ -142,7 +135,6 @@ function startSetting() {
     if (settings[i].status === true) {
       liList[i].children[1].style.backgroundColor = 'tomato';
       liList[i].children[1].style.alignItems = 'flex-end';
-      showImg.src = changeImgArr[i]
       isTrue.push(i)
     }
   }
@@ -150,5 +142,6 @@ function startSetting() {
   console.log(isTrue);
 
 }
+
 
 
