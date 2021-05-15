@@ -24,7 +24,7 @@ function open() {
   startRotate(items[3])
   items[1].style.borderLeft = '0'
   startRotate(items[4])
-  book.style.transform = 'translateX(160px)';
+  book.style.transform = 'translateX(200px)';
   items[0].style.cursor = 'pointer'
 }
 
