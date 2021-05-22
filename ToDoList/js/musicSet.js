@@ -33,17 +33,17 @@ if (musicSetting.length === 0) {
   switchBtn.style.backgroundColor = '#f40'
   switchBtn.innerHTML = '开'
   music.style.backgroundColor = 'yellow'
-  switchBtn.style.left = '50px'
+  switchBtn.style.marginLeft = '50px'
 }
 
 function musicStart() {
   if (musicStatus === false) {
-    switchBtn.style.left = '50px'
+    switchBtn.style.marginLeft = '50px'
     musicStatus = true
     musicIcon.id = 'musicAnimation'
     musicIcon.title = "点击关闭音乐"
   } else {
-    switchBtn.style.left = '0'
+    switchBtn.style.marginLeft = '0'
     musicStatus = false
     musicIcon.id = ''
     musicIcon.title = "点击开启音乐"

@@ -46,6 +46,8 @@ items[0].addEventListener("click", function () {
 
 var timer = setTimeout(() => {
   open()
+  items[1].style.backgroundImage = 'url(./images/730e0cf3d7ca7bcb0558c2d2bd096b63f624a82f.jpg)'
+  items[1].style.zIndex = 0
 }, 1000)
 
 // window.addEventListener('contextmenu', function(e){

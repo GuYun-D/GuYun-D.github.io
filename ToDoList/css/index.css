@@ -1,25 +1,103 @@
 @import url(//at.alicdn.com/t/font_2530725_iv40li7q04d.css);
+body, html {
+  height: 100%;
+}
+
 body {
-  background-color: #f8b669;
-  display: flex;
-  justify-content: center;
   overflow-y: hidden;
   user-select: none;
   width: 100%;
   box-sizing: border-box;
-  padding: 9% 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   position: relative;
+  background-color: #f8b669;
+}
+
+body .index {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body .index .book-wrap {
+  flex: 3;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body .index .aside {
+  position: relative;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.music {
+  width: 100px;
+  height: 50px;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: all 0s;
+  background-color: rgb(87, 101, 116);
+  z-index: 10000;
+}
+
+.music #switch::before{
+  content: "音乐";
+  display: block;
+  position: absolute;
+  left: 34px;
+  top: -46px;
+  font-size: 18px;
+}
+
+.music .switch-wrap{
+  position: relative;
+}
+
+/* .music .music-title{
+  position: absolute;
+  top: -30px;
+  left: 25px;
+  color: #fff;
+  font-size: 18px;
+} */
+
+.music #switch {
+  display: block;
+  height: 50px;
+  width: 50px;
+  background-color: #ccc;
+  z-index: 2;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  transition: left .8s;
+}
+
+div.tip {
+  color: #f40;
 }
 
 .book {
-  width: 33%;
-  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
   transform-style: preserve-3d;
   perspective: 1200px;
   transition: .8s;
   z-index: 345;
+  flex: 1;
 }
 
 .item1, .item2, .item3, .item4, .item5 {
@@ -42,11 +120,9 @@ body {
   border-radius: 0 20px 20px 0;
 }
 
-div.tip{
-  position: absolute;
-  left: 40px;
-  top: 500px;
-  color: #f40;
+.test {
+  width: 410px;
+  height: 440px;
 }
 
 .main {
@@ -63,41 +139,7 @@ div.tip{
   min-width: 1260px;
 }
 
-.music{
-  position: absolute;
-  bottom: 25%;
-  left: 10%;
-  width: 100px;
-  height: 50px;
-  border-radius: 28px;
-  cursor: pointer;
-  transition: all 0s;
-}
-
-.music .music-title{
-  position: absolute;
-  top: -30px;
-  left: 25px;
-  color: #fff;
-  font-size: 18px;
-}
-
-.music #switch{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 50px;
-  background-color: #ccc;
-  z-index: 2;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 50px;
-  color: #fff;
-  transition: left .8s;
-}
-
-i.icon-shezhi{
+i.icon-shezhi {
   font-size: 22px;
   margin-left: 30px;
   font-weight: bold;
@@ -106,6 +148,6 @@ i.icon-shezhi{
   transition: all .8s;
 }
 
-i.icon-shezhi:hover{
+i.icon-shezhi:hover {
   color: #fff;
 }

@@ -259,8 +259,6 @@ main {
   text-indent: 2em;
 }
 
-
-
 .history .page-title i.icon-qingchuhuancun {
   display: inline-block;
   margin-left: 100px;
@@ -425,8 +423,16 @@ main {
   }
 }
 
-.textOverflow{
+.textOverflow {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+textarea {
+  resize: none;
+  outline: oldlace;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 5px;
 }
