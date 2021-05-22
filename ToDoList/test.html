@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  nihao1
+  <!--[if lt IE 9]>
+<div class="browser-happy">
+    <div class="content">
+        <p>作为前端开发人员，还用这么low的浏览器，再不更新会遭鄙视的～～</p>
+        <p>本站不支持IE9以下浏览器访问！</p>
+        <a href="https://browsehappy.com/">立即更新</a>
+        <img src="https://jquery.cuishifeng.cn/images/logo_4fa80ea.jpg" alt="logo" style="display: none;">
+    </div>
+</div>
+<![endif]-->
+
+  <script>
+    (function (window, Object) {
+      function IEVersion() {
+        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
+        var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+        var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+        var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+        if (isIE) {
+          var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+          reIE.test(userAgent);
+          var fIEVersion = parseFloat(RegExp["$1"]);
+          if (fIEVersion == 7) {
+            console.log(7);
+            return 7;
+          } else if (fIEVersion == 8) {
+            console.log(8);
+            return 8;
+          } else if (fIEVersion == 9) {
+            console.log(9);
+            return 9;
+          } else if (fIEVersion == 10) {
+            console.log(10);
+            return 10;
+          } else {
+            console.log("6-");
+            return 6;//IE版本<=7
+          }
+        } else if (isEdge) {
+          console.log(edge);
+          return 'edge';//edge
+        } else if (isIE11) {
+          console.log("ie11");
+          return 11; //IE11  
+        } else {
+          return -1;//不是ie浏览器
+        }
+      }
+      window.IEVersion = IEVersion();
+    })()
+  </script>
+</body>
+
+</html>

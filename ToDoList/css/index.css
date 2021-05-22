@@ -151,3 +151,24 @@ i.icon-shezhi {
 i.icon-shezhi:hover {
   color: #fff;
 }
+
+.browser-happy{
+  padding: 80px 0 0 140px;
+  width: 100vw;
+  height: 100vh;
+  background-color: blanchedalmond;
+  z-index: 100000000;
+  box-sizing: border-box;
+}
+
+.browser-happy a{
+  display: block;
+  width: 200px;
+  line-height: 40px;
+  height: 40px;
+  border: 2px solid #111;
+  border-radius: 35px;
+  margin-top: 30px;
+  padding: 10px 20px;
+  color: #111;
+}
