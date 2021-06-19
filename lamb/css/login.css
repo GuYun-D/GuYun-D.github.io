@@ -1,0 +1,92 @@
+@font-face {
+  font-family: mFont;
+  src: url('../font/ITCEDSCR.TTF');
+}
+
+body, html{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-image: radial-gradient(circle farthest-side at 3.125rem 3.125rem,#3ce4ff 50%,#2f8aff);
+  min-width: 320px;
+}
+
+header{
+  height: 30%;
+  text-align: center;
+  padding-top: 4.75rem;
+  box-sizing: border-box;
+}
+
+header span{
+  font-size: 7.5rem;
+  font-weight: 10;
+  color: #fff;
+  font-family: mFont;
+}
+
+nav{
+  height: 5%;
+  color: #fff;
+  font-size: 0;
+  width: 100%;
+}
+
+nav span{
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+  font-size: 1.5rem;
+  padding-bottom: .625rem;
+  border-bottom: .0625rem solid #fff;
+}
+
+.sgin-on{
+  border-bottom: .125rem solid #fff;
+}
+
+main{
+  height: 65%;
+  box-sizing: border-box;
+  padding: 1.25rem 3.125rem 3.125rem;
+}
+
+main ul{
+  width: 100%;
+  height: 60%;
+}
+
+main ul li{
+  box-sizing: border-box;
+  width: 100%;
+  height: 33%;
+  padding: .3125rem;
+  border-bottom: .0625rem solid #fff;
+  color: #fff;
+  font-size: 1.875rem;
+  padding-top: 1.875rem;
+}
+
+main ul li:nth-child(1){
+  margin-left: -0.3125rem;
+}
+
+main ul li input{
+  background-color: transparent;
+  color: #fff;
+}
+
+main ul li input::placeholder{
+  color: #fff;
+}
+
+main button {
+  width: 100%;
+  height: 10%;
+  margin-top: 2.5rem;
+  background-color: #f14388;
+  border-radius: .625rem;
+  color: #fff;
+  font-size: 1.25rem;
+}
