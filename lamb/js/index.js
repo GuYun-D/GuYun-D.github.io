@@ -14,6 +14,7 @@ menu.addEventListener('click', function () {
     this.style.right = '.875rem'
     aside.style.width = '0'
     info.style.display = 'none'
+    document.body.style.overflow = ''
     asideBoolean = false
   }
 

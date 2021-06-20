@@ -1,0 +1,199 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /* background-image: radial-gradient(circle farthest-side at 3.125rem 3.125rem,#3ce4ff 50%,#2f8aff); */
+  min-width: 320px;
+  position: relative;
+  /* overflow: hidden; */
+}
+
+/* 头部区域 */
+
+header {
+  width: 100%;
+  height: 8%;
+  background-color: rgb(47, 138, 255);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #ccc;
+  transition: all .4s;
+}
+
+header .iconfont {
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.header-on {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+/* 主要区域 */
+
+main {
+  width: 100%;
+  height: 35%;
+}
+
+main div.price {
+  width: 100%;
+  height: 24%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  color: #f25591;
+  border-bottom: 1px solid #e3e5e6;
+}
+
+main div.menu {
+  width: 100%;
+  height: 74%;
+  margin-top: 2%;
+}
+
+main .menu ul {
+  width: 100%;
+  height: 100%;
+}
+
+main .menu li:nth-child(1) {
+  border-top: 1px solid #e3e5e6;
+}
+
+main .menu li {
+  box-sizing: border-box;
+  width: 100%;
+  height: 33%;
+  border-bottom: 1px solid #e3e5e6;
+  padding: 0 1.25rem;
+}
+
+main .menu li a,
+main .menu li div {
+  width: 100%;
+  display: block;
+  height: 100%;
+  padding-top: 20px;
+}
+
+main .menu li a span{
+  font-size: 1.3rem;
+}
+
+main .menu li .iconfont{
+  color: rgb(47, 138, 255);
+  font-size: 1.6rem;
+  margin-right: .3125rem;
+}
+
+main .menu li .now-time{
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* 计算区域 */
+
+footer {
+  width: 100%;
+  height: 57%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+footer .keys{
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  font-size: 0;
+  box-sizing: border-box;
+}
+
+footer .keys button{
+  display: inline-block;
+  width: 33.33%;
+  height: 25%;
+  font-size: 3rem;
+  color: #000;
+  box-sizing: border-box;
+  border: 1px solid #e3e5e6;
+} 
+
+footer .keys .number{
+  width: 75%;
+  height: 100%;
+} 
+
+footer .keys .number button:nth-child(n){
+  border-bottom: none;
+}
+
+footer .keys .number button:nth-child(n){
+  border-right: none;
+}
+
+footer .keys .oper{
+  width: 25%;
+  height: 100%;
+}
+
+footer .keys .oper button{
+  width: 100%;
+  height: 50%;
+}
+
+footer .keys .oper button.icon-qingchu{
+  font-weight: bold;
+}
+
+footer .keys .oper button.ok{
+  color: #036BFE;
+}
+
+footer .keys .oper button:nth-child(n){
+  border-bottom: none;
+}
+
+/* 弹出框 */
+.category{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #b2b2b2be;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.category .container{
+  width: 90%;
+  height: 70%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 0 10px #ccc;
+  overflow: scroll;
+}
+
+.category .container button{
+  width: 32%;
+  height: 33.33%;
+  border: 1px solid #ccc;
+}
+
+.category .container button i{
+  font-size: 3.375rem;
+}
+
+.category .container button div{
+  font-size: 1.0625rem;
+}

@@ -193,7 +193,7 @@ footer .container{
   height: 100%;
 }
 
-footer .container div.add{
+footer .container a.add{
   padding-bottom: 2rem;
   font-size: 3rem;
   background-color: #fff;
