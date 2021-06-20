@@ -1,0 +1,180 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /* background-image: radial-gradient(circle farthest-side at 3.125rem 3.125rem,#3ce4ff 50%,#2f8aff); */
+  min-width: 320px;
+  background-color: rgb(224, 224, 224);
+  max-width: 100%;
+  min-width: 100%;
+}
+
+@font-face {
+  font-family: youyuan;
+  src: url('../font/SIMYOU.TTF');
+}
+
+header {
+  width: 100%;
+  height: 40%;
+  /* background-image: radial-gradient(to right, #3ce4ff, #2f8aff);
+   */
+  background-image: linear-gradient( to bottom, #3ce4ff, #2f8aff);
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: .625rem;
+}
+
+header .title{
+  width: 40%;
+  height: 18%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #34d1f7;
+}
+
+header .chart-on{
+  background-color: #76e4fe;
+}
+
+header .title div{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .9375rem;
+}
+
+nav {
+  width: 100%;
+  height: 8%;
+  color: #4696fb;
+  border-bottom: .125rem solid rgb(187, 183, 183);
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+nav>i {
+  text-align: center;
+  flex: 1;
+}
+
+nav>i.icon-zuojiantou {
+  float: left;
+}
+
+nav>i.icon-youjiantou {
+  float: right;
+}
+
+nav>div {
+  text-align: center;
+  flex: 3;
+}
+
+nav i {
+  font-size: 1.225rem!important;
+  vertical-align: middle;
+}
+
+main {
+  width: 100%;
+  margin-top: .925rem;
+}
+
+main .statistics li {
+  border: 1px solid rgb(194, 194, 194);
+  border-left: none;
+  border-right: none;
+  padding: .3125rem;
+  background-color: #fff;
+}
+
+main .statistics li .title {
+  width: 30%;
+  font-family: youyuan;
+}
+
+main .statistics li .num {
+  display: inline-block;
+  text-align: right;
+  width: 80%;
+}
+
+.income {
+  color: #006ef7;
+}
+
+.live-expenses {
+  color: #ee2770;
+}
+
+main .day {
+  width: 100%;
+}
+
+main .day .time {
+  width: 100%;
+  font-size: .8rem;
+  color: #887f7f;
+  padding: .3125rem 0;
+}
+
+main .day li {
+  padding: .325rem .3125rem;
+  border-bottom: 1px solid #aaa;
+  background-color: #fff;
+}
+
+main .day li i {
+  font-size: 1.2625rem;
+  vertical-align: middle;
+}
+
+main .day li .type {
+  font-family: youyuan;
+}
+
+main .day li .num {
+  display: block;
+  text-align: right;
+  float: right;
+}
+
+footer {
+  width: 100%;
+  height: 12%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  border-top: 2px solid #ccc;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+footer .container a.add {
+  padding-bottom: 2rem;
+  font-size: 3rem;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+footer .container .iconfont {
+  font-size: 1.6rem;
+  color: #666;
+}
+
+footer .container .footer-active {
+  color: #2f8aff;
+}

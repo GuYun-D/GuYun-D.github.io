@@ -82,7 +82,8 @@ main .menu li div {
   padding-top: 20px;
 }
 
-main .menu li a span{
+main .menu li a span,
+main .menu li div span{
   font-size: 1.3rem;
 }
 
