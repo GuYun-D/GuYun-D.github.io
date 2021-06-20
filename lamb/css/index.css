@@ -5,6 +5,8 @@ body, html {
   /* background-image: radial-gradient(circle farthest-side at 3.125rem 3.125rem,#3ce4ff 50%,#2f8aff); */
   min-width: 320px;
   background-color: rgb(224, 224, 224);
+  max-width: 100%;
+  min-width: 100%;
 }
 
 @font-face {
@@ -21,7 +23,7 @@ header {
   color: #fff;
   text-align: center;
   box-sizing: border-box;
-  padding: .625rem 1.875rem 0rem;
+  padding: 1.2rem 1.875rem 0rem;
   position: relative;
 }
 
@@ -30,6 +32,7 @@ header .title i {
   vertical-align: middle;
   position: absolute;
   right: .875rem;
+  transition: all .2s;
 }
 
 header .price {
@@ -194,6 +197,7 @@ footer .container div.add{
   padding-bottom: 2rem;
   font-size: 3rem;
   background-color: #fff;
+  border-radius: 50%;
 }
 
 footer .container .iconfont{
@@ -203,4 +207,68 @@ footer .container .iconfont{
 
 footer .container .footer-active{
   color: #2f8aff;
+}
+
+aside{
+  width: 0;
+  height: 100%;
+  background-color: #f40;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: width .2s;
+  /* 点击图标left: -11.125rem; */
+  background-image: linear-gradient(to top, #308BFE, #3CE4FF);
+
+}
+
+aside ul {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-size: .7375rem;
+}
+
+
+aside ul li{
+  width: 100%;
+}
+
+aside ul li.item{
+  height: 8%;
+  box-sizing: border-box;
+  padding-left: 1.85rem;
+}
+
+
+
+aside ul .userInfo{
+  height: 18%;  
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: .925rem;
+}
+
+aside ul .userInfo .avatar img{
+  width: 3rem;
+  border-radius: 50%;
+  margin-right: .625rem;
+}
+
+aside ul .userInfo .info{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+aside ul .userInfo .info .userName{
+  margin-bottom: .625rem;
+}
+
+aside ul li.item .iconfont{
+  font-size: 1rem;
+  vertical-align: text-bottom;
+  margin-right: .3125rem;
 }
