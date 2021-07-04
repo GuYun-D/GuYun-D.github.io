@@ -6,13 +6,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuYun-D</title>
+    <link rel="stylesheet" href="./lamb/css/reset.css">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #wrap {
+            width: 100%;
+            overflow: hidden;
+            background: #ccc;
+        }
+
+        #main {
+            width: 100%;
+            background: #ccc;
+            position: relative;
+        }
+
+        .page {
+            width: 100%;
+            margin: 0;
+        }
+
+        #page1 {
+            background: #E4E6CE;
+        }
+
+        #page2 {
+            background: #6CE26C;
+        }
+
+        #page3 {
+            background: #BF4938;
+        }
+
+        #page4 {
+            background: #2932E1;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>孤云的空间</h1>
-    <em>开荒中</em>
+    <!-- <h1>孤云的空间</h1>
     <a href="./ToDoList/index.html">todoList</a>
-    <a href="./lamb/login.html">记账</a>
+    <a href="./lamb/login.html">记账</a> -->
+
+    <div id="wrap">
+        <div id="main">
+            <div id="page1" class="page"></div>
+            <div id="page2" class="page"></div>
+            <div id="page3" class="page"></div>
+            <div id="page4" class="page"></div>
+        </div>
+    </div>
+
+    <script>
+        var pages = document.getElementsByClassName("page");
+        var wrap = document.getElementById("wrap");
+        var len = document.documentElement.clientHeight;
+        var main = document.getElementById("main");
+        wrap.style.height = len + "px";
+        for (var i = 0; i < pages.length; i++) {
+            pages[i].style.height = len + "px";
+        }
+        if (navigator.userAgent.toLowerCase().indexOf("firefox") != -1) {
+            document.addEventListener("DOMMouseScroll", scrollFun);
+        } else if (document.addEventListener) {
+            document.addEventListener("mousewheel", scrollFun, false);
+        } else if (document.attachEvent) {
+            document.attachEvent("onmousewheel", scrollFun);
+        } else {
+            document.onmousewheel = scrollFun;
+        }
+        var startTime = 0;
+        var endTime = 0;
+        var now = 0;
+        function scrollFun(e) {
+            startTime = new Date().getTime();
+            var event = e || window.event;
+            var dir = event.detail || -event.wheelDelta;
+            if (startTime - endTime > 1000) {
+                if (dir > 0 && now > -3 * len) {
+                    now -= len;
+                    main.style.top = now + "px";
+                    endTime = new Date().getTime();
+                } else if (dir < 0 && now < 0) {
+                    now += len;
+                    main.style.top = now + "px";
+                    endTime = new Date().getTime();
+                }
+            } else {
+                event.preventDefault();
+            }
+        }
+    </script>
 </body>
 
 </html>
