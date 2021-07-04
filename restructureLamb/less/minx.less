@@ -1,0 +1,54 @@
+.inp-group {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    padding: 15px 0;
+
+    display: flex;
+
+    label {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+    }
+
+    input {
+      flex: 8;
+      height: 40px;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      background-color: transparent;
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+
+    span {
+      position: absolute;
+      right: 16px;
+      top: 11px;
+      font-size: 34px;
+    }
+
+
+
+    &:last-child {
+      border: none;
+
+      button {
+        background-color: #f14388;
+        width: 100%;
+        border-radius: 10px;
+        height: 50px;
+        color: #fff;
+        font-size: 20px;
+        margin-top: 20px;
+      }
+    }
+  }
