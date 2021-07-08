@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/resetCss.css">
+  <link rel="stylesheet" href="../css/iconColor.css">
+  <link rel="stylesheet" href="../less/add.css">
+</head>
+
+<body>
+  <header>
+    <i class="iconfont icon-zuojiantou" style="position: relative;"><a href="./home.html"
+        style="display: block; width: 100%; height: 10px; position: absolute; left: 0; top: 0;"></a></i>
+    <a href="./add.html" class="on">支出</a>
+    <a href="./add.html">收入</a>
+    <i class="iconfont icon-ziyuan"></i>
+  </header>
+  <section>
+    <ul>
+      <li class="count">
+        ￥ 0.00
+      </li>
+      <li class="category item clearfix">
+        <i class="iconfont icon-leimupinleifenleileibie"></i>
+        <span>类目</span>
+        <i class="iconfont icon-right right"></i>
+      </li>
+      <li class="add-time item clearfix">
+        <i class="iconfont icon-riqi"></i>
+        <span>时间</span>
+        <span class="right">2021-6-19 星期六</span>
+      </li>
+      <li class="remarks item clearfix">
+        <i class="iconfont icon-jiludanzilishijilu"></i>
+        <span>备注</span>
+        <i class="iconfont icon-right right"></i>
+      </li>
+    </ul>
+  </section>
+  <main class="clearfix">
+    <div class="key-num left">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>.</button>
+      <button>0</button>
+      <button class="iconfont icon-jisuanqi-"></button>
+    </div>
+    <div class="oper right">
+      <button class="iconfont icon-qingchu"></button>
+      <button>Ok</button>
+    </div>
+  </main>
+
+  <div class="mask" id="cateMask">
+    <div class="container clearfix">
+      <div class="item">
+        <i class="iconfont icon-canju"></i>
+        <span>饮食</span>
+      </div>
+      <div class="item">
+        <i class="iconfont icon-gongsi-"></i>
+        <span>家庭</span>
+      </div>
+      <div class="item">
+        <i class="iconfont icon-jiaotong"></i>
+        <span>交通</span>
+      </div>
+      <div class="item">
+        <i class="iconfont icon-lvhang"></i>
+        <span>旅行</span>
+      </div>
+      <div class="item">
+        <i class="iconfont icon-gouwu"></i>
+        <span>购物</span>
+      </div>
+      <div class="item">
+        <i class="iconfont icon-yule"></i>
+        <span>娱乐</span>
+      </div>
+      <div class="item">
+        <i class="iconfont icon-licai"></i>
+        <span>理财</span>
+      </div>
+      <div class="item">
+        <i class="iconfont icon-yiyuan"></i>
+        <span>健康</span>
+      </div>
+      <div class="item">
+        <i class="iconfont icon-qita"></i>
+        <span>其他</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mask" id="remarkMask">
+    <div class="container">
+      <h5>添加备注</h5>
+      <textarea placeholder="请输入备注" name="" id="" cols="30" rows="10"></textarea>
+      <button id="remarkMaskBtn">确定</button>
+    </div>
+  </div>
+
+  <script>
+    var container = document.querySelector('#cateMask')
+    var category = document.querySelector('.category')
+    var mask = document.querySelector('.mask')
+    var remarks = document.querySelector('.remarks')
+    var remarkMask = document.querySelector('#remarkMask')
+    var remarkMaskBtn = document.querySelector('#remarkMaskBtn')
+    var items = container.getElementsByTagName('div')
+    for (var i = 0; i < items.length; i++) {
+      items[i].addEventListener('click', function () {
+        mask.style.display = 'none'
+      })
+    }
+
+    remarks.addEventListener('click', function(){
+      remarkMask.style.display = 'flex'
+    })
+
+    category.addEventListener('click', function () {
+      mask.style.display = 'flex'
+
+    })
+
+    remarkMaskBtn.addEventListener('click', function(){
+      remarkMask.style.display = 'none'
+    })
+  </script>
+</body>
+
+</html>
