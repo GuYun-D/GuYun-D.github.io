@@ -76,7 +76,7 @@ body main {
 }
 body main .key-num {
   box-sizing: border-box;
-  width: 75%;
+  width: 74%;
   height: 100%;
 }
 body main .key-num button {
@@ -119,6 +119,7 @@ body .mask .container {
   width: 90%;
   height: 480px;
   background-color: #fff;
+  border-radius: 10px;
 }
 body .mask .container .item {
   width: 33.33%;
