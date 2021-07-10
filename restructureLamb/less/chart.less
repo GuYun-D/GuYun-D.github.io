@@ -36,7 +36,30 @@ body {
     background-color: #ff4;
     background-image: radial-gradient(circle farthest-side at 30% 15%, #2f8aff 0%, #3ce4ff);
 
+    .switch-btn{
+      width: 40%;
+      height: 40px;
+      background-color: #37c7ff;
+      border-radius: 25px;
+      margin: 10px auto 0;
+      font-size: 0;
+      border: 1px solid #fff;
+      overflow: hidden;
+      
 
+      span{
+        display: inline-block;
+        width: 50%;
+        height: 100%;
+        font-size: 28px;
+        text-align: center;
+        line-height: 40px;
+
+        &.chart-on{
+          background-color: #77e5ff;
+        }
+      }
+    }
   }
 
   .expenses {
