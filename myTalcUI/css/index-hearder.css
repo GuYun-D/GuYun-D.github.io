@@ -1,0 +1,18 @@
+header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.39);
+  font-weight: bold;
+}
+header .logo img {
+  width: 30px;
+  height: 30px;
+}
+header .text span {
+  margin: 0 10px;
+  color: #fff;
+}
